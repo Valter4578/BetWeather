@@ -7,19 +7,18 @@
 
 import Foundation
 
-class CityListInteractorImpl: CityListInteractorInput {
+class CityListInteractorImpl: CityListInteractorInput {    
     weak var output: CityListInteractorOutput?
     var networkRepository: NetworkRepository
     
-    init(output: CityListInteractorOutput?, networkRepository: NetworkRepository) {
-        self.output = output
+    init(networkRepository: NetworkRepository) {
         self.networkRepository = networkRepository
     }
     
-    func fetchWeather() {
+    func fetchWeather(for coordinates: Coordinates) {
         Task {
-            try await networkRepository.fetchWeather(coordinates: Coordinates(lat: 52.37125, lon: 4.89388))
-            output?.weatherFetched()
+            let forecastInfo = try await networkRepository.fetchWeather(coordinates: coordinates)
+            output?.weatherFetched(forecastInfo: forecastInfo)
         }
     }
 }

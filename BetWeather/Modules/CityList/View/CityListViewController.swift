@@ -5,11 +5,13 @@
 //  Created by Максим Алексеев  on 23.09.2024.
 //
 
+import CoreLocation
 import UIKit
 
-class CityListViewController: UIViewController, CityListView {
+class CityListViewController: UIViewController, CityListView, CLLocationManagerDelegate {
     // MARK: - Dependencies
     weak var presenter: CityListPresenter?
+    var locationManager: CLLocationManager?
     
     // MARK: - Properties
     
@@ -20,7 +22,7 @@ class CityListViewController: UIViewController, CityListView {
     lazy var citiesTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.register(ForecastTableViewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(CityListTableViewCell.self, forCellReuseIdentifier: cellId)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -29,10 +31,24 @@ class CityListViewController: UIViewController, CityListView {
     // MARK: - VC lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+        
         presenter?.viewDidLoad(view: self)
     }
     
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedAlways {
+            if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+                if CLLocationManager.isRangingAvailable() {
+                    guard let coordinate = manager.location?.coordinate else { return }
+                    presenter?.didGetLocation(lat: coordinate.latitude, lon: coordinate.longitude)
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Table View Delegate
@@ -51,3 +67,4 @@ extension CityListViewController: UITableViewDataSource {
         return cell 
     }
 }
+

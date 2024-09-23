@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         Task {
             
             let repository = NetworkRepositoryImpl(networkService: NetworkService())
-            let forecast = try await repository.fetchWeather(coordinates: Coordinates(lat: 52.37125, lon: 4.89388))
-            print(forecast)
+//            let forecast = try await repository.fetchWeather(coordinates: Coordinates(lat: 52.37125, lon: 4.89388))
+//            print(forecast)
             
         }
     }

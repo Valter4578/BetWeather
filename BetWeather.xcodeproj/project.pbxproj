@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		889CF33D2CA15C660040C1CD /* ForecastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33C2CA15C660040C1CD /* ForecastInfo.swift */; };
+		889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */; };
 		88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615A92C9D93E800E99262 /* AppDelegate.swift */; };
 		88C615AC2C9D93E800E99262 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AB2C9D93E800E99262 /* SceneDelegate.swift */; };
 		88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AD2C9D93E800E99262 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		889CF33C2CA15C660040C1CD /* ForecastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInfo.swift; sourceTree = "<group>"; };
+		889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListWireframe.swift; sourceTree = "<group>"; };
 		88C615A62C9D93E800E99262 /* BetWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C615A92C9D93E800E99262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C615AB2C9D93E800E99262 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		889CF33E2CA17C950040C1CD /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+				889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */,
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		88C6159D2C9D93E800E99262 = {
 			isa = PBXGroup;
 			children = (
@@ -136,6 +146,7 @@
 		88E82E792CA00C61007B6C43 /* CityList */ = {
 			isa = PBXGroup;
 			children = (
+				889CF33E2CA17C950040C1CD /* Wireframe */,
 				88E82E802CA02602007B6C43 /* Interactor */,
 				88E82E7D2CA00CEA007B6C43 /* Presenter */,
 				88E82E7A2CA00C6D007B6C43 /* View */,
@@ -251,6 +262,7 @@
 				88E82E7C2CA00C7B007B6C43 /* CityListContract.swift in Sources */,
 				88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */,
 				88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */,
+				889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */,
 				88E82E842CA027C5007B6C43 /* NetworkRepository.swift in Sources */,
 				88E82E722C9DC20F007B6C43 /* BaseNetworkService.swift in Sources */,
 				88E82E762CA0074C007B6C43 /* CityListViewController.swift in Sources */,

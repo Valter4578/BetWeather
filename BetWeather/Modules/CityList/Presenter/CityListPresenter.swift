@@ -8,24 +8,31 @@
 import Foundation
 
 final class CityListPresenterImpl: CityListPresenter {
-    
-    private weak var view: CityListView?
-    private let router: CityListRouter
-    private let interactor: CityListInteractorInput
+    // MARK: - Dependencies
+    weak var view: CityListView?
+    var router: CityListWireframe?
+    var interactor: CityListInteractorInput?
+    var wireframe: CityListWireframe?
 
-    init(router: CityListRouter, interactor: CityListInteractorInput) {
-        self.router = router
-        self.interactor = interactor
-    }
+    // MARK: - Properties
+    var usersCoordinate: Coordinates?
 
+    // MARK: - Functions
     func viewDidLoad(view: CityListView) {
         self.view = view
-        
     }
+    
+    func didGetLocation(lat: Double, lon: Double) {
+        self.usersCoordinate = Coordinates(lat: lat, lon: lon)
+        
+        if let usersCoordinate = usersCoordinate {
+            interactor?.fetchWeather(for: usersCoordinate)
+        }
+    } 
 }
 
 extension CityListPresenterImpl: CityListInteractorOutput {
-    func weatherFetched() {
+    func weatherFetched(forecastInfo: ForecastInfo) {
         
     }
 }
