@@ -13,7 +13,6 @@ class CityListWireframeImpl: CityListWireframe {
         let interactor = CityListInteractorImpl(networkRepository: networkRepository)
         let presenter: CityListPresenter & CityListInteractorOutput = CityListPresenterImpl()
         
-        
         cityListView.presenter = presenter
         cityListView.presenter?.wireframe = CityListWireframeImpl()
         cityListView.presenter?.view = cityListView

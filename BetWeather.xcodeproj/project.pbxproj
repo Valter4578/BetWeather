@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		889CF33D2CA15C660040C1CD /* ForecastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33C2CA15C660040C1CD /* ForecastInfo.swift */; };
 		889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */; };
+		889CF3422CA191060040C1CD /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF3412CA191060040C1CD /* CityInfo.swift */; };
 		88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615A92C9D93E800E99262 /* AppDelegate.swift */; };
 		88C615AC2C9D93E800E99262 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AB2C9D93E800E99262 /* SceneDelegate.swift */; };
 		88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AD2C9D93E800E99262 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		889CF33C2CA15C660040C1CD /* ForecastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInfo.swift; sourceTree = "<group>"; };
 		889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListWireframe.swift; sourceTree = "<group>"; };
+		889CF3412CA191060040C1CD /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		88C615A62C9D93E800E99262 /* BetWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C615A92C9D93E800E99262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C615AB2C9D93E800E99262 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				88E82E932CA02AD4007B6C43 /* Coordinates.swift */,
 				889CF33C2CA15C660040C1CD /* ForecastInfo.swift */,
+				889CF3412CA191060040C1CD /* CityInfo.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				88E82E6C2C9DB45B007B6C43 /* NetworkError.swift in Sources */,
 				88E82E652C9DACF9007B6C43 /* LocationService.swift in Sources */,
 				88E82E822CA02611007B6C43 /* CityListInteractor.swift in Sources */,
+				889CF3422CA191060040C1CD /* CityInfo.swift in Sources */,
 				88C615AC2C9D93E800E99262 /* SceneDelegate.swift in Sources */,
 				889CF33D2CA15C660040C1CD /* ForecastInfo.swift in Sources */,
 				88E82E782CA00854007B6C43 /* CityListTableViewCell.swift in Sources */,
@@ -423,6 +427,9 @@
 				DEVELOPMENT_TEAM = 44ZWCLCJ2W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BetWeather/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Мы будем использовать локацию для определения погоды";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы будем использовать локацию для определения погоды";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -450,6 +457,9 @@
 				DEVELOPMENT_TEAM = 44ZWCLCJ2W;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BetWeather/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Мы будем использовать локацию для определения погоды";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Мы будем использовать локацию для определения погоды";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

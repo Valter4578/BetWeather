@@ -16,7 +16,8 @@ final class CityListPresenterImpl: CityListPresenter {
 
     // MARK: - Properties
     var usersCoordinate: Coordinates?
-
+    var cityInfos: [CityInfo] = []
+    
     // MARK: - Functions
     func viewDidLoad(view: CityListView) {
         self.view = view
@@ -33,6 +34,8 @@ final class CityListPresenterImpl: CityListPresenter {
 
 extension CityListPresenterImpl: CityListInteractorOutput {
     func weatherFetched(forecastInfo: ForecastInfo) {
-        
+        let cityInfo = CityInfo(cityName: forecastInfo.info?.tzinfo?.name ?? "", lowestTemp: forecastInfo.fact?.tempMin ?? 0, highestTemp: forecastInfo.fact?.tempMin ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
+        cityInfos.append(cityInfo)
+        view?.reloadData() 
     }
 }
