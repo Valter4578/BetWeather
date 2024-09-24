@@ -5,7 +5,7 @@
 //  Created by Максим Алексеев  on 23.09.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol CityListView: AnyObject {
     func reloadData() 
@@ -21,6 +21,7 @@ protocol CityListPresenter: AnyObject {
     
     func viewDidLoad(view: CityListView)
     func didGetLocation(lat: Double, lon: Double) 
+    func didSelectRow(at indexPath: IndexPath)
 }
 
 protocol CityListInteractorInput: AnyObject {
@@ -33,9 +34,6 @@ protocol CityListInteractorOutput: AnyObject {
 }
 
 protocol CityListWireframe: AnyObject {
-    static func createCityListModule(cityListView: CityListViewController) 
-}
-
-protocol CityListRepo: AnyObject {
-
+    func pushToDetail(with forecastInfo: ForecastInfo, from view: UIViewController)
+    static func createCityListModule(cityListView: CityListViewController)
 }

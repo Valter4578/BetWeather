@@ -20,6 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         let cityListViewController = CityListViewController()
         let navigationController = UINavigationController(rootViewController: cityListViewController)
+        navigationController.navigationBar.topItem?.title = "Citites"
+        navigationController.navigationBar.prefersLargeTitles = true 
         
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

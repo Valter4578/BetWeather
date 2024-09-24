@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class CityListPresenterImpl: CityListPresenter {
     // MARK: - Dependencies
@@ -30,6 +31,11 @@ final class CityListPresenterImpl: CityListPresenter {
             interactor?.fetchWeather(for: usersCoordinate)
         }
     } 
+    
+    func didSelectRow(at indexPath: IndexPath) {
+        guard let viewController = view as? UIViewController else { return }
+        wireframe?.pushToDetail(with: cityInfos[indexPath.row].fullForecast, from: viewController)
+    }
 }
 
 extension CityListPresenterImpl: CityListInteractorOutput {

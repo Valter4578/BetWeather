@@ -18,7 +18,9 @@ class CityListInteractorImpl: CityListInteractorInput {
     func fetchWeather(for coordinates: Coordinates) {
         Task {
             let forecastInfo = try await networkRepository.fetchWeather(coordinates: coordinates)
-            output?.weatherFetched(forecastInfo: forecastInfo)
+            await MainActor.run {
+                output?.weatherFetched(forecastInfo: forecastInfo)
+            }
         }
     }
 }

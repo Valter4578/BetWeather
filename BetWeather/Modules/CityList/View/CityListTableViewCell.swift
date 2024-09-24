@@ -54,7 +54,8 @@ class CityListTableViewCell: UITableViewCell {
     private func setupTempLabel() {
         addSubview(temperatureLabel)
         NSLayoutConstraint.activate([
-            temperatureLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
+            temperatureLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            temperatureLabel.leadingAnchor.constraint(equalTo: locationTitleLabel.trailingAnchor),
             temperatureLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
         ])
     }
@@ -62,8 +63,8 @@ class CityListTableViewCell: UITableViewCell {
     private func setupTempInfoLabel() {
         addSubview(tempInfoLabel)
         NSLayoutConstraint.activate([
-            tempInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 16),
-            tempInfoLabel.bottomAnchor.constraint(equalTo: topAnchor, constant: -10),
+            tempInfoLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            tempInfoLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
     }
 }

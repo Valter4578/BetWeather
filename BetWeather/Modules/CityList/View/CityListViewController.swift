@@ -33,6 +33,9 @@ class CityListViewController: UIViewController, CityListView {
         super.viewDidLoad()
         
         CityListWireframeImpl.createCityListModule(cityListView: self)
+        
+        setupTableView()
+        
         presenter?.viewDidLoad(view: self)
         setupLocationManager()
     }
@@ -50,6 +53,16 @@ class CityListViewController: UIViewController, CityListView {
         locationManager?.requestAlwaysAuthorization()
         locationManager?.startUpdatingLocation()
     }
+    
+    private func setupTableView() {
+        view.addSubview(citiesTableView)
+        NSLayoutConstraint.activate([
+            citiesTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            citiesTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            citiesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            citiesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
 }
 
 // MARK: - CLLocationManagerDelegate
@@ -59,6 +72,9 @@ extension CityListViewController: CLLocationManagerDelegate  {
             if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
                 if CLLocationManager.isRangingAvailable() {
                     guard let coordinate = manager.location?.coordinate else { return }
+                    let latitude = coordinate.latitude
+                    let longitude = coordinate.longitude
+                    presenter?.didGetLocation(lat: latitude, lon: longitude)
                 }
             }
         }
@@ -78,7 +94,13 @@ extension CityListViewController: CLLocationManagerDelegate  {
 
 // MARK: - Table View Delegate
 extension CityListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.didSelectRow(at: indexPath)
+    }
 }
 
 extension CityListViewController: UITableViewDataSource {

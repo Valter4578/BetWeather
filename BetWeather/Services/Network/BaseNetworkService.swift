@@ -38,6 +38,7 @@ class BaseNetworkService<Router: URLRequestConvertible> {
             let decodedData = try decoder.decode(returnType, from: data)
             return decodedData
         } catch {
+            print(error)
             throw NetworkError.decodingFailed
         }
     }

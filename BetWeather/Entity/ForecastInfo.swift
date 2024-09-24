@@ -80,11 +80,21 @@ enum BiometCondition: String, Codable {
 
 enum FactCondition: String, Codable {
     case clear = "clear"
-    case cloudy = "cloudy"
-    case lightRain = "light-rain"
-    case overcast = "overcast"
     case partlyCloudy = "partly-cloudy"
+    case cloudy = "cloudy"
+    case overcast = "overcast"
+    case light = "light-rain"
     case rain = "rain"
+    case heavyRain = "heavy-rain"
+    case showers = "showers"
+    case wetSnow = "wet-snow"
+    case lightSnow = "light-snow"
+    case snow = "snow"
+    case snowShowers = "snow-showers"
+    case hail = "hail"
+    case thunderstorm = "thunderstorm"
+    case thunderstormWithRain = "thunderstorm-with-rain"
+    case thunderstormWithHail = "thunderstorm-with-hail"
 }
 
 enum Daytime: String, Codable {
