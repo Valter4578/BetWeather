@@ -22,8 +22,10 @@ protocol CityDetailPresenter: AnyObject {
     var wireframe: CityDetailWireframe? { get set }
     
     var forecastInfo: ForecastInfo? { get set }
+    func getNumberOfItems() -> Int
     
     func viewDidLoad(view: CityDetailView)
+    func getHourCellData(for row: Int) -> HourCellData?
 }
 
 protocol CityDetailInteractorInput: AnyObject {

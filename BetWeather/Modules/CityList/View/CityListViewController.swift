@@ -100,6 +100,7 @@ extension CityListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter?.didSelectRow(at: indexPath)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
