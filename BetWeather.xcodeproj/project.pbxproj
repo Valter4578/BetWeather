@@ -12,10 +12,14 @@
 		882C78CD2CA2E31C00053F75 /* CityDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78CC2CA2E31C00053F75 /* CityDetailPresenter.swift */; };
 		882C78CF2CA2E32300053F75 /* CityDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78CE2CA2E32300053F75 /* CityDetailInteractor.swift */; };
 		882C78D12CA2E32A00053F75 /* CityDetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D02CA2E32A00053F75 /* CityDetailWireframe.swift */; };
-		882C78D32CA40ADD00053F75 /* HoursCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */; };
+		882C78D32CA40ADD00053F75 /* HoursCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D22CA40ADD00053F75 /* HoursCollectionViewItem.swift */; };
 		882C78D52CA4141900053F75 /* HourCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D42CA4141900053F75 /* HourCellData.swift */; };
 		889833722CA443C0002E157D /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833712CA443C0002E157D /* DayTableViewCell.swift */; };
 		889833752CA51588002E157D /* WeekDayCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833742CA51588002E157D /* WeekDayCellData.swift */; };
+		889833782CA527DB002E157D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833772CA527DB002E157D /* ImageCache.swift */; };
+		8898337A2CA5280A002E157D /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833792CA5280A002E157D /* ImageDownloader.swift */; };
+		8898337D2CA55E06002E157D /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8898337C2CA55E06002E157D /* SVGKit */; };
+		8898337F2CA55E06002E157D /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8898337E2CA55E06002E157D /* SVGKitSwift */; };
 		889CF33D2CA15C660040C1CD /* ForecastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33C2CA15C660040C1CD /* ForecastInfo.swift */; };
 		889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */; };
 		889CF3422CA191060040C1CD /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF3412CA191060040C1CD /* CityInfo.swift */; };
@@ -45,10 +49,12 @@
 		882C78CC2CA2E31C00053F75 /* CityDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailPresenter.swift; sourceTree = "<group>"; };
 		882C78CE2CA2E32300053F75 /* CityDetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailInteractor.swift; sourceTree = "<group>"; };
 		882C78D02CA2E32A00053F75 /* CityDetailWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailWireframe.swift; sourceTree = "<group>"; };
-		882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursCollectionViewCell.swift; sourceTree = "<group>"; };
+		882C78D22CA40ADD00053F75 /* HoursCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursCollectionViewItem.swift; sourceTree = "<group>"; };
 		882C78D42CA4141900053F75 /* HourCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellData.swift; sourceTree = "<group>"; };
 		889833712CA443C0002E157D /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
 		889833742CA51588002E157D /* WeekDayCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayCellData.swift; sourceTree = "<group>"; };
+		889833772CA527DB002E157D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		889833792CA5280A002E157D /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		889CF33C2CA15C660040C1CD /* ForecastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInfo.swift; sourceTree = "<group>"; };
 		889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListWireframe.swift; sourceTree = "<group>"; };
 		889CF3412CA191060040C1CD /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
@@ -79,6 +85,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8898337F2CA55E06002E157D /* SVGKitSwift in Frameworks */,
+				8898337D2CA55E06002E157D /* SVGKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,10 +141,19 @@
 		889833732CA5134A002E157D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */,
+				882C78D22CA40ADD00053F75 /* HoursCollectionViewItem.swift */,
 				889833712CA443C0002E157D /* DayTableViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		889833762CA527D6002E157D /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				889833772CA527DB002E157D /* ImageCache.swift */,
+				889833792CA5280A002E157D /* ImageDownloader.swift */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		889CF33E2CA17C950040C1CD /* Wireframe */ = {
@@ -182,6 +199,7 @@
 		88E82E632C9DACD9007B6C43 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				889833762CA527D6002E157D /* Image */,
 				88E82E682C9DB3AD007B6C43 /* Network */,
 				88E82E672C9DB3A2007B6C43 /* Location */,
 			);
@@ -283,6 +301,10 @@
 			dependencies = (
 			);
 			name = BetWeather;
+			packageProductDependencies = (
+				8898337C2CA55E06002E157D /* SVGKit */,
+				8898337E2CA55E06002E157D /* SVGKitSwift */,
+			);
 			productName = BetWeather;
 			productReference = 88C615A62C9D93E800E99262 /* BetWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -311,6 +333,9 @@
 				Base,
 			);
 			mainGroup = 88C6159D2C9D93E800E99262;
+			packageReferences = (
+				8898337B2CA55E06002E157D /* XCRemoteSwiftPackageReference "SVGKit" */,
+			);
 			productRefGroup = 88C615A72C9D93E800E99262 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -340,7 +365,7 @@
 				889833752CA51588002E157D /* WeekDayCellData.swift in Sources */,
 				88E82E7C2CA00C7B007B6C43 /* CityListContract.swift in Sources */,
 				88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */,
-				882C78D32CA40ADD00053F75 /* HoursCollectionViewCell.swift in Sources */,
+				882C78D32CA40ADD00053F75 /* HoursCollectionViewItem.swift in Sources */,
 				882C78D12CA2E32A00053F75 /* CityDetailWireframe.swift in Sources */,
 				88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */,
 				889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */,
@@ -353,6 +378,7 @@
 				88E82E722C9DC20F007B6C43 /* BaseNetworkService.swift in Sources */,
 				88E82E762CA0074C007B6C43 /* CityListViewController.swift in Sources */,
 				88E82E962CA02AD4007B6C43 /* Coordinates.swift in Sources */,
+				8898337A2CA5280A002E157D /* ImageDownloader.swift in Sources */,
 				88E82E702C9DB4A8007B6C43 /* NetworkService.swift in Sources */,
 				882C78C92CA2DE3000053F75 /* CityDetailViewController.swift in Sources */,
 				88E82E6A2C9DB3D0007B6C43 /* NetworkRouter.swift in Sources */,
@@ -365,6 +391,7 @@
 				88E82E782CA00854007B6C43 /* CityListTableViewCell.swift in Sources */,
 				88E82E6E2C9DB48E007B6C43 /* APIConfig.swift in Sources */,
 				88E82E7F2CA00CF5007B6C43 /* CityListPresenter.swift in Sources */,
+				889833782CA527DB002E157D /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,6 +610,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8898337B2CA55E06002E157D /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8898337C2CA55E06002E157D /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8898337B2CA55E06002E157D /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		8898337E2CA55E06002E157D /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8898337B2CA55E06002E157D /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 88C6159E2C9D93E800E99262 /* Project object */;
 }

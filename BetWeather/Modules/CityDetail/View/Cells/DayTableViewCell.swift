@@ -31,11 +31,11 @@ class DayTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var iconImageView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
-        return view
+    private lazy var iconImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     // MARK: - Inits
@@ -57,6 +57,10 @@ class DayTableViewCell: UITableViewCell {
         weekDayLabel.text = data.weekDay
         lowestTempLabel.text = String(data.lowestTemp)
         highestTempLabel.text = String(data.highestTemp)
+    }
+    
+    func configureImageView(with image: UIImage) {
+        iconImageView.image = image 
     }
     
     // MARK: - Setup

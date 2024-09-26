@@ -5,7 +5,7 @@
 //  Created by Максим Алексеев  on 24.09.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol CityDetailView: AnyObject {
     var presenter: CityDetailPresenter? { get set }
@@ -14,6 +14,8 @@ protocol CityDetailView: AnyObject {
     func setTempLabel(with text: String)
     func setConditionsLabel(with text: String) 
     func reloadData()
+    
+    func updateCellImage(_ image: UIImage, at index: Int, in viewType: CityDetailImageInViewType)
 }
 
 protocol CityDetailPresenter: AnyObject {
@@ -27,14 +29,18 @@ protocol CityDetailPresenter: AnyObject {
     func viewDidLoad(view: CityDetailView)
     func getHourCellData(for row: Int) -> HourCellData?
     func getWeekDayCellData(for row: Int) -> WeekDayCellData?
+    
+    func loadImage(with name: String, at index: Int, in viewType: CityDetailImageInViewType)
 }
 
 protocol CityDetailInteractorInput: AnyObject {
     var output: CityDetailInteractorOutput? { get set }
+    
+    func downloadImage(with iconName: String, for index: Int, in viewType: CityDetailImageInViewType)
 }
 
 protocol CityDetailInteractorOutput: AnyObject {
-
+    func imageDownloaded(with image: UIImage, for index: Int, in viewType: CityDetailImageInViewType)
 }
 
 protocol CityDetailWireframe: AnyObject {

@@ -8,6 +8,19 @@
 import Foundation
 
 class CityDetailInteractorImpl: CityDetailInteractorInput {
+    // MARK: - Dependencies
     weak var output: CityDetailInteractorOutput?
+    var imageDownloader: ImageDownloader? 
     
+    func downloadImage(with iconName: String, for index: Int, in viewType: CityDetailImageInViewType) {
+        Task {
+            do {
+                if let image = try await imageDownloader?.downloadImage(with: iconName) {
+                    output?.imageDownloaded(with: image, for: index, in: viewType)
+                }
+            } catch {
+                print(error)
+            }
+        }
+    }
 }

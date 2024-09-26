@@ -10,6 +10,8 @@ import Foundation
 class CityDetailWireframeImpl: CityDetailWireframe {
     class func createCityDetailModule(view: CityDetailView) {
         let interactor = CityDetailInteractorImpl()
+        interactor.imageDownloader = ImageDownloaderImpl()
+        
         let presenter: CityDetailPresenter & CityDetailInteractorOutput = CityDetailPresenterImpl()
         
         view.presenter = presenter

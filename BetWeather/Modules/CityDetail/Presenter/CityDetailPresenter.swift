@@ -6,6 +6,13 @@
 //
 
 import Foundation
+import UIKit
+
+/// enum для опеределения в какую view вставлять изображение
+enum CityDetailImageInViewType {
+    case collectionView
+    case tableView
+}
 
 class CityDetailPresenterImpl: CityDetailPresenter {
     // MARK: - Dependencies
@@ -52,7 +59,13 @@ class CityDetailPresenterImpl: CityDetailPresenter {
         let highestTemp = forecast.parts?.day?.tempMax
         let lowestTemp = forecast.parts?.night?.tempMin
         
-        return WeekDayCellData(weekDay: weekDay ?? "", iconName: "", lowestTemp: lowestTemp ?? 0, highestTemp: highestTemp ?? 0)
+        // берем иконку для дня 
+        let iconName = forecast.parts?.day?.icon
+        return WeekDayCellData(weekDay: weekDay ?? "", iconName: iconName ?? "", lowestTemp: lowestTemp ?? 0, highestTemp: highestTemp ?? 0)
+    }
+    
+    func loadImage(with name: String, at index: Int, in viewType: CityDetailImageInViewType) {
+        interactor?.downloadImage(with: name, for: index, in: viewType)
     }
     
     // MARK: - Private functions
@@ -64,5 +77,11 @@ class CityDetailPresenterImpl: CityDetailPresenter {
 }
 
 extension CityDetailPresenterImpl: CityDetailInteractorOutput {
-    
+    func imageDownloaded(with image: UIImage, for index: Int, in viewType: CityDetailImageInViewType) {
+        Task {
+            await MainActor.run {
+                view?.updateCellImage(image, at: index, in: viewType)
+            }
+        }
+    }
 }

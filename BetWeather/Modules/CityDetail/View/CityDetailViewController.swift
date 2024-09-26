@@ -9,7 +9,7 @@ import UIKit
 
 class CityDetailViewController: UIViewController, CityDetailView {
     // MARK: - Properties
-    private let collectionViewCellId = "HoursCollectionViewCell"
+    private let collectionViewCellId = "HoursCollectionViewItem"
     private let tableViewCellId = "DayTableViewCell"
     
     // MARK: - Dependencies
@@ -44,7 +44,7 @@ class CityDetailViewController: UIViewController, CityDetailView {
         flowLayout.minimumInteritemSpacing = 0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-        collectionView.register(HoursCollectionViewCell.self, forCellWithReuseIdentifier: collectionViewCellId)
+        collectionView.register(HoursCollectionViewItem.self, forCellWithReuseIdentifier: collectionViewCellId)
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -90,6 +90,19 @@ class CityDetailViewController: UIViewController, CityDetailView {
     
     func setConditionsLabel(with text: String) {
         conditionLabel.text = text
+    }
+    
+    func updateCellImage(_ image: UIImage, at index: Int, in viewType: CityDetailImageInViewType) {
+        switch viewType {
+        case .collectionView:
+            if let item = self.hoursCollectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? HoursCollectionViewItem {
+                item.configureImageView(with: image)
+            }
+        case .tableView:
+            if let cell = self.weekDaysTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? DayTableViewCell {
+                cell.configureImageView(with: image)
+            }
+        }
     }
     
     func reloadData() {
@@ -156,9 +169,10 @@ extension CityDetailViewController: UICollectionViewDataSource, UICollectionView
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as? HoursCollectionViewCell else { fatalError("Couldn't dequeue HoursCollectionViewCell")}
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as? HoursCollectionViewItem else { fatalError("Couldn't dequeue HoursCollectionViewItem")}
         if let cellData = presenter?.getHourCellData(for: indexPath.row) {
             cell.configureCell(with: cellData)
+            presenter?.loadImage(with: cellData.iconName, at: indexPath.row, in: .collectionView)
         }
         return cell
     }
@@ -184,8 +198,8 @@ extension CityDetailViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? DayTableViewCell else { fatalError("Couldn't dequeue with DayTableViewCell identifier") }
         if let cellData = presenter?.getWeekDayCellData(for: indexPath.row) {
             cell.configureCell(with: cellData)
+            presenter?.loadImage(with: cellData.iconName, at: indexPath.row, in: .tableView)
         }
         return cell
     }
-    
 }

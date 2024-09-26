@@ -1,5 +1,5 @@
 //
-//  HoursCollectionViewCell.swift
+//  HoursCollectionViewItem.swift
 //  BetWeather
 //
 //  Created by Максим Алексеев  on 25.09.2024.
@@ -7,20 +7,13 @@
 
 import UIKit
 
-class HoursCollectionViewCell: UICollectionViewCell {
+class HoursCollectionViewItem: UICollectionViewCell {
     // MARK: - Views
-//    private lazy var imageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.contentMode = .scaleAspectFit
-//        return imageView
-//    }()
-    
-    lazy var imageView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .purple
-        return view
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
     }()
     
     private lazy var tempLabel: UILabel = {
@@ -81,6 +74,9 @@ class HoursCollectionViewCell: UICollectionViewCell {
     func configureCell(with data: HourCellData) {
         hourLabel.text = String(data.hour)
         tempLabel.text = String(data.temp)
-//        icon = 
+    }
+    
+    func configureImageView(with image: UIImage) {
+        imageView.image = image
     }
 }
