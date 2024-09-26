@@ -38,7 +38,7 @@ final class CityListPresenterImpl: CityListPresenter {
     
     func didSelectRow(at indexPath: IndexPath) {
         guard let viewController = view as? UIViewController else { return }
-        wireframe?.pushToDetail(with: cityInfos[indexPath.row].fullForecast, from: viewController)
+        wireframe?.pushToDetail(with: cityInfos[indexPath.row].fullForecast, cityInfos[indexPath.row], from: viewController)
     }
 }
 

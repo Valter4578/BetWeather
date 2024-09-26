@@ -7,10 +7,11 @@
 
 import UIKit
 class CityListWireframeImpl: CityListWireframe {
-    func pushToDetail(with forecastInfo: ForecastInfo, from view: UIViewController) {
+    func pushToDetail(with forecastInfo: ForecastInfo, _ cityInfo: CityInfo, from view: UIViewController) {
         guard let detailView = CityDetailViewController() as? CityDetailView & UIViewController else { return }
         CityDetailWireframeImpl.createCityDetailModule(view: detailView)
         detailView.presenter?.forecastInfo = forecastInfo
+        detailView.presenter?.cityInfo = cityInfo
         view.navigationController?.pushViewController(detailView, animated: true)
     }
     

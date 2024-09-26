@@ -24,6 +24,7 @@ protocol CityDetailPresenter: AnyObject {
     var wireframe: CityDetailWireframe? { get set }
     
     var forecastInfo: ForecastInfo? { get set }
+    var cityInfo: CityInfo? { get set }
     func getNumberOfCollectionItems() -> Int
     
     func viewDidLoad(view: CityDetailView)

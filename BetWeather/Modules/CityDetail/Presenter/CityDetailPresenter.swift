@@ -15,6 +15,7 @@ enum CityDetailImageInViewType {
 }
 
 class CityDetailPresenterImpl: CityDetailPresenter {
+    
     // MARK: - Dependencies
     var wireframe: CityDetailWireframe?
     weak var view: CityDetailView?
@@ -22,10 +23,11 @@ class CityDetailPresenterImpl: CityDetailPresenter {
     
     // MARK: - Properties
     var forecastInfo: ForecastInfo?
+    var cityInfo: CityInfo?
     
     // MARK: - CityDetailPresenter's functions
     func viewDidLoad(view: CityDetailView) {
-        view.setCityLabel(with: forecastInfo?.info?.tzinfo?.name ?? "")
+        view.setCityLabel(with: cityInfo?.cityName ?? "")
         view.setTempLabel(with: String(forecastInfo?.fact?.temp ?? 0))
         view.setConditionsLabel(with: forecastInfo?.fact?.condition?.rawValue ?? "")
     }

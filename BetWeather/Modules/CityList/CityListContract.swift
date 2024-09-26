@@ -40,6 +40,6 @@ protocol CityListInteractorOutput: AnyObject {
 }
 
 protocol CityListWireframe: AnyObject {
-    func pushToDetail(with forecastInfo: ForecastInfo, from view: UIViewController)
+    func pushToDetail(with forecastInfo: ForecastInfo,_ cityInfo: CityInfo, from view: UIViewController)
     static func createCityListModule(cityListView: CityListViewController)
 }
