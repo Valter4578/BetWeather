@@ -22,10 +22,11 @@ protocol CityDetailPresenter: AnyObject {
     var wireframe: CityDetailWireframe? { get set }
     
     var forecastInfo: ForecastInfo? { get set }
-    func getNumberOfItems() -> Int
+    func getNumberOfCollectionItems() -> Int
     
     func viewDidLoad(view: CityDetailView)
     func getHourCellData(for row: Int) -> HourCellData?
+    func getWeekDayCellData(for row: Int) -> WeekDayCellData?
 }
 
 protocol CityDetailInteractorInput: AnyObject {

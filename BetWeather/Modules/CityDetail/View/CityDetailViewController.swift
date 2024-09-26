@@ -10,6 +10,7 @@ import UIKit
 class CityDetailViewController: UIViewController, CityDetailView {
     // MARK: - Properties
     private let collectionViewCellId = "HoursCollectionViewCell"
+    private let tableViewCellId = "DayTableViewCell"
     
     // MARK: - Dependencies
     var presenter: CityDetailPresenter?
@@ -53,6 +54,15 @@ class CityDetailViewController: UIViewController, CityDetailView {
         return collectionView
     }()
     
+    lazy var weekDaysTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.register(DayTableViewCell.self, forCellReuseIdentifier: tableViewCellId)
+        tableView.delegate = self
+        tableView.dataSource = self
+        return tableView
+    }()
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,10 +74,12 @@ class CityDetailViewController: UIViewController, CityDetailView {
         setupConditionLabel()
         
         setupCollectionView()
+        setupTableView()
         
         presenter?.viewDidLoad(view: self)
     }
     
+    // MARK: - CityDetailView functions
     func setCityLabel(with text: String) {
         cityNameLabel.text = text
     }
@@ -120,22 +132,27 @@ extension CityDetailViewController  {
             hoursCollectionView.heightAnchor.constraint(equalToConstant: view.frame.height / 6.5),
         ])
     }
+    
+    private func setupTableView() {
+        view.addSubview(weekDaysTableView)
+        NSLayoutConstraint.activate([
+            weekDaysTableView.topAnchor.constraint(equalTo: hoursCollectionView.bottomAnchor, constant: 30),
+            weekDaysTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 25),
+            weekDaysTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -25),
+            weekDaysTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
 }
 
-//extension CityDetailViewController : UIScrollViewDelegate {
-//    
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) { //When scrolling it sets the contentOffset to zero, so there is no offset when scrolling
-//        hoursCollectionView.contentOffset.y = 0 //Set the offset to X for vertical maybe
-//    }
-//}
-
+// MARK: - UICollectionViewDelegate
 extension CityDetailViewController: UICollectionViewDelegate {
     
 }
 
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension CityDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return presenter?.getNumberOfItems() ?? 0
+        return presenter?.getNumberOfCollectionItems() ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -150,4 +167,25 @@ extension CityDetailViewController: UICollectionViewDataSource, UICollectionView
         let size = hoursCollectionView.frame.height
         return CGSize(width: 50, height: size)
     }
+}
+
+// MARK: - UITableViewDelegate
+extension CityDetailViewController: UITableViewDelegate {
+    
+}
+
+// MARK: - UITableViewDataSource
+extension CityDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as? DayTableViewCell else { fatalError("Couldn't dequeue with DayTableViewCell identifier") }
+        if let cellData = presenter?.getWeekDayCellData(for: indexPath.row) {
+            cell.configureCell(with: cellData)
+        }
+        return cell
+    }
+    
 }

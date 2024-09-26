@@ -14,6 +14,8 @@
 		882C78D12CA2E32A00053F75 /* CityDetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D02CA2E32A00053F75 /* CityDetailWireframe.swift */; };
 		882C78D32CA40ADD00053F75 /* HoursCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */; };
 		882C78D52CA4141900053F75 /* HourCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 882C78D42CA4141900053F75 /* HourCellData.swift */; };
+		889833722CA443C0002E157D /* DayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833712CA443C0002E157D /* DayTableViewCell.swift */; };
+		889833752CA51588002E157D /* WeekDayCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889833742CA51588002E157D /* WeekDayCellData.swift */; };
 		889CF33D2CA15C660040C1CD /* ForecastInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33C2CA15C660040C1CD /* ForecastInfo.swift */; };
 		889CF3402CA17CA00040C1CD /* CityListWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */; };
 		889CF3422CA191060040C1CD /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF3412CA191060040C1CD /* CityInfo.swift */; };
@@ -45,6 +47,8 @@
 		882C78D02CA2E32A00053F75 /* CityDetailWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityDetailWireframe.swift; sourceTree = "<group>"; };
 		882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoursCollectionViewCell.swift; sourceTree = "<group>"; };
 		882C78D42CA4141900053F75 /* HourCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourCellData.swift; sourceTree = "<group>"; };
+		889833712CA443C0002E157D /* DayTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTableViewCell.swift; sourceTree = "<group>"; };
+		889833742CA51588002E157D /* WeekDayCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayCellData.swift; sourceTree = "<group>"; };
 		889CF33C2CA15C660040C1CD /* ForecastInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastInfo.swift; sourceTree = "<group>"; };
 		889CF33F2CA17CA00040C1CD /* CityListWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityListWireframe.swift; sourceTree = "<group>"; };
 		889CF3412CA191060040C1CD /* CityInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
@@ -97,7 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				882C78C82CA2DE3000053F75 /* CityDetailViewController.swift */,
-				882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */,
+				889833732CA5134A002E157D /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -124,6 +128,15 @@
 				882C78D02CA2E32A00053F75 /* CityDetailWireframe.swift */,
 			);
 			path = Wireframe;
+			sourceTree = "<group>";
+		};
+		889833732CA5134A002E157D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				882C78D22CA40ADD00053F75 /* HoursCollectionViewCell.swift */,
+				889833712CA443C0002E157D /* DayTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		889CF33E2CA17C950040C1CD /* Wireframe */ = {
@@ -249,6 +262,7 @@
 				889CF33C2CA15C660040C1CD /* ForecastInfo.swift */,
 				889CF3412CA191060040C1CD /* CityInfo.swift */,
 				882C78D42CA4141900053F75 /* HourCellData.swift */,
+				889833742CA51588002E157D /* WeekDayCellData.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -323,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				889833752CA51588002E157D /* WeekDayCellData.swift in Sources */,
 				88E82E7C2CA00C7B007B6C43 /* CityListContract.swift in Sources */,
 				88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */,
 				882C78D32CA40ADD00053F75 /* HoursCollectionViewCell.swift in Sources */,
@@ -333,6 +348,7 @@
 				882C78CF2CA2E32300053F75 /* CityDetailInteractor.swift in Sources */,
 				88E82E842CA027C5007B6C43 /* NetworkRepository.swift in Sources */,
 				882C78D52CA4141900053F75 /* HourCellData.swift in Sources */,
+				889833722CA443C0002E157D /* DayTableViewCell.swift in Sources */,
 				882C78C72CA2DE1000053F75 /* CityDetailContract.swift in Sources */,
 				88E82E722C9DC20F007B6C43 /* BaseNetworkService.swift in Sources */,
 				88E82E762CA0074C007B6C43 /* CityListViewController.swift in Sources */,
