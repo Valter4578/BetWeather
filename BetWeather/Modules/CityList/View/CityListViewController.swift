@@ -36,6 +36,8 @@ class CityListViewController: UIViewController, CityListView {
         
         setupTableView()
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showAddCityAlert(sender:)))
+
         presenter?.viewDidLoad(view: self)
         setupLocationManager()
     }
@@ -62,6 +64,27 @@ class CityListViewController: UIViewController, CityListView {
             citiesTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             citiesTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
+    }
+    
+    @objc func showAddCityAlert(sender: UIBarButtonItem) {
+        let alertController = UIAlertController(title: "Add New City", message: "Enter the name of the new city", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "City Name"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
+            if let cityName = alertController.textFields?.first?.text, !cityName.isEmpty {
+                self?.presenter?.didGetCityName(cityName)
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(addAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }
 

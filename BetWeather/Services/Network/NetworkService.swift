@@ -9,11 +9,11 @@ import Foundation
 
 protocol NetworkServiceProtocol {
     func fetchWeather(coordinates: Coordinates) async throws -> ForecastInfo
-    func fetchCityCoordinates(with cityName: String) async throws -> GeocodingResponse
+    func fetchCityCoordinates(for cityName: String) async throws -> GeocodingResponse
 }
 
 class NetworkService: BaseNetworkService<NetworkRouter>, NetworkServiceProtocol {
-    func fetchCityCoordinates(with cityName: String) async throws -> GeocodingResponse {
+    func fetchCityCoordinates(for cityName: String) async throws -> GeocodingResponse {
         return try await request(GeocodingResponse.self, router: .coordinates(cityName: cityName))
     }
     

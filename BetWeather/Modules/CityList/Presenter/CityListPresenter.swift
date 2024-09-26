@@ -30,7 +30,11 @@ final class CityListPresenterImpl: CityListPresenter {
         if let usersCoordinate = usersCoordinate {
             interactor?.fetchWeather(for: usersCoordinate)
         }
-    } 
+    }
+    
+    func didGetCityName(_ name: String) {
+        interactor?.fetchCityCoordinates(for: name)
+    }
     
     func didSelectRow(at indexPath: IndexPath) {
         guard let viewController = view as? UIViewController else { return }
@@ -39,6 +43,10 @@ final class CityListPresenterImpl: CityListPresenter {
 }
 
 extension CityListPresenterImpl: CityListInteractorOutput {
+    func coordinatesFetched(coordinates: Coordinates) {
+        interactor?.fetchWeather(for: coordinates)
+    }
+    
     func weatherFetched(forecastInfo: ForecastInfo) {
         let cityInfo = CityInfo(cityName: forecastInfo.info?.tzinfo?.name ?? "", lowestTemp: forecastInfo.fact?.tempMin ?? 0, highestTemp: forecastInfo.fact?.tempMin ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
         cityInfos.append(cityInfo)

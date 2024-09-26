@@ -23,4 +23,18 @@ class CityListInteractorImpl: CityListInteractorInput {
             }
         }
     }
+    
+    func fetchCityCoordinates(for city: String) {
+        Task {
+            let response = try await networkRepository.fetchCityCoordinates(for: city)
+            guard let lat = response.features?[0].properties?.lat,
+                  let lon = response.features?[0].properties?.lon
+            else { return }
+            
+            let coordinates = Coordinates(lat: lat, lon: lon)
+            await MainActor.run {
+                output?.coordinatesFetched(coordinates: coordinates)
+            }
+        }
+    }
 }

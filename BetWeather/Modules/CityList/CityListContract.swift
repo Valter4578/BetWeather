@@ -20,17 +20,22 @@ protocol CityListPresenter: AnyObject {
     var cityInfos: [CityInfo] { get set } 
     
     func viewDidLoad(view: CityListView)
-    func didGetLocation(lat: Double, lon: Double) 
+    
+    func didGetLocation(lat: Double, lon: Double)
+    func didGetCityName(_ name: String) 
+    
     func didSelectRow(at indexPath: IndexPath)
 }
 
 protocol CityListInteractorInput: AnyObject {
     var output: CityListInteractorOutput? { get set }
     func fetchWeather(for coordinates: Coordinates)
+    func fetchCityCoordinates(for city: String)
 }
 
 protocol CityListInteractorOutput: AnyObject {
     func weatherFetched(forecastInfo: ForecastInfo)
+    func coordinatesFetched(coordinates: Coordinates)
 }
 
 protocol CityListWireframe: AnyObject {
