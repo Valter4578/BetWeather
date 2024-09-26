@@ -73,7 +73,7 @@ class HoursCollectionViewItem: UICollectionViewCell {
     // MARK: - Configure Functions
     func configureCell(with data: HourCellData) {
         hourLabel.text = String(data.hour)
-        tempLabel.text = String(data.temp)
+        tempLabel.text = String(data.temp) + "°"
     }
     
     func configureImageView(with image: UIImage) {

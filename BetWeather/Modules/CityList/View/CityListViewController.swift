@@ -67,10 +67,10 @@ class CityListViewController: UIViewController, CityListView {
     }
     
     @objc func showAddCityAlert(sender: UIBarButtonItem) {
-        let alertController = UIAlertController(title: "Add New City", message: "Enter the name of the new city", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Add New City", message: "Введите полностью название города", preferredStyle: .alert)
         
         alertController.addTextField { (textField) in
-            textField.placeholder = "City Name"
+            textField.placeholder = "Название города"
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -118,7 +118,7 @@ extension CityListViewController: CLLocationManagerDelegate  {
 // MARK: - Table View Delegate
 extension CityListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -127,6 +127,7 @@ extension CityListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension CityListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter?.cityInfos.count ?? 0
@@ -136,8 +137,8 @@ extension CityListViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as? CityListTableViewCell else { fatalError("Couldn't dequeue CityListTableViewCell") }
         if let cityInfo = presenter?.cityInfos[indexPath.row] {
             cell.locationTitleLabel.text = cityInfo.cityName
-            cell.tempInfoLabel.text = "H: \(cityInfo.highestTemp) L: \(cityInfo.lowestTemp)"
-            cell.temperatureLabel.text = "\(cityInfo.tempNow)"
+            cell.tempInfoLabel.text = "H: \(cityInfo.highestTemp)° L: \(cityInfo.lowestTemp)°"
+            cell.temperatureLabel.text = "\(cityInfo.tempNow)°"
         }
         return cell
     }

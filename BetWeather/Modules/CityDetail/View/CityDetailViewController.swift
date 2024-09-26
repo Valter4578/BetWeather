@@ -48,7 +48,9 @@ class CityDetailViewController: UIViewController, CityDetailView {
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = .red
+        collectionView.layer.borderColor = UIColor.lightGray.cgColor
+        collectionView.layer.borderWidth = 2
+        collectionView.layer.cornerRadius = 15
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -58,6 +60,9 @@ class CityDetailViewController: UIViewController, CityDetailView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(DayTableViewCell.self, forCellReuseIdentifier: tableViewCellId)
+        tableView.layer.borderColor = UIColor.lightGray.cgColor
+        tableView.layer.borderWidth = 2
+        tableView.layer.cornerRadius = 15
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
@@ -103,10 +108,6 @@ class CityDetailViewController: UIViewController, CityDetailView {
                 cell.configureImageView(with: image)
             }
         }
-    }
-    
-    func reloadData() {
-        
     }
 }
 

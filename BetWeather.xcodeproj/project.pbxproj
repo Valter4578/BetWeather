@@ -26,10 +26,8 @@
 		889CF3422CA191060040C1CD /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889CF3412CA191060040C1CD /* CityInfo.swift */; };
 		88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615A92C9D93E800E99262 /* AppDelegate.swift */; };
 		88C615AC2C9D93E800E99262 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AB2C9D93E800E99262 /* SceneDelegate.swift */; };
-		88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C615AD2C9D93E800E99262 /* ViewController.swift */; };
 		88C615B32C9D93E900E99262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88C615B22C9D93E900E99262 /* Assets.xcassets */; };
 		88C615B62C9D93E900E99262 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88C615B42C9D93E900E99262 /* LaunchScreen.storyboard */; };
-		88E82E652C9DACF9007B6C43 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E82E642C9DACF9007B6C43 /* LocationService.swift */; };
 		88E82E6A2C9DB3D0007B6C43 /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E82E692C9DB3D0007B6C43 /* NetworkRouter.swift */; };
 		88E82E6C2C9DB45B007B6C43 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E82E6B2C9DB45B007B6C43 /* NetworkError.swift */; };
 		88E82E6E2C9DB48E007B6C43 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E82E6D2C9DB48E007B6C43 /* APIConfig.swift */; };
@@ -63,11 +61,9 @@
 		88C615A62C9D93E800E99262 /* BetWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BetWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88C615A92C9D93E800E99262 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88C615AB2C9D93E800E99262 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		88C615AD2C9D93E800E99262 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		88C615B22C9D93E900E99262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		88C615B52C9D93E900E99262 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88C615B72C9D93E900E99262 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		88E82E642C9DACF9007B6C43 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		88E82E692C9DB3D0007B6C43 /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
 		88E82E6B2C9DB45B007B6C43 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		88E82E6D2C9DB48E007B6C43 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
@@ -190,7 +186,6 @@
 				88E82E632C9DACD9007B6C43 /* Services */,
 				88C615A92C9D93E800E99262 /* AppDelegate.swift */,
 				88C615AB2C9D93E800E99262 /* SceneDelegate.swift */,
-				88C615AD2C9D93E800E99262 /* ViewController.swift */,
 				88C615B22C9D93E900E99262 /* Assets.xcassets */,
 				88C615B42C9D93E900E99262 /* LaunchScreen.storyboard */,
 				88C615B72C9D93E900E99262 /* Info.plist */,
@@ -203,7 +198,6 @@
 			children = (
 				889833762CA527D6002E157D /* Image */,
 				88E82E682C9DB3AD007B6C43 /* Network */,
-				88E82E672C9DB3A2007B6C43 /* Location */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -215,14 +209,6 @@
 				88E82E792CA00C61007B6C43 /* CityList */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		88E82E672C9DB3A2007B6C43 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				88E82E642C9DACF9007B6C43 /* LocationService.swift */,
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 		88E82E682C9DB3AD007B6C43 /* Network */ = {
@@ -367,7 +353,6 @@
 			files = (
 				889833752CA51588002E157D /* WeekDayCellData.swift in Sources */,
 				88E82E7C2CA00C7B007B6C43 /* CityListContract.swift in Sources */,
-				88C615AE2C9D93E800E99262 /* ViewController.swift in Sources */,
 				882C78D32CA40ADD00053F75 /* HoursCollectionViewItem.swift in Sources */,
 				882C78D12CA2E32A00053F75 /* CityDetailWireframe.swift in Sources */,
 				88C615AA2C9D93E800E99262 /* AppDelegate.swift in Sources */,
@@ -386,7 +371,6 @@
 				882C78C92CA2DE3000053F75 /* CityDetailViewController.swift in Sources */,
 				88E82E6A2C9DB3D0007B6C43 /* NetworkRouter.swift in Sources */,
 				88E82E6C2C9DB45B007B6C43 /* NetworkError.swift in Sources */,
-				88E82E652C9DACF9007B6C43 /* LocationService.swift in Sources */,
 				88E82E822CA02611007B6C43 /* CityListInteractor.swift in Sources */,
 				889833812CA56945002E157D /* GeocodingResponse.swift in Sources */,
 				889CF3422CA191060040C1CD /* CityInfo.swift in Sources */,

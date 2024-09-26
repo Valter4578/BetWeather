@@ -8,7 +8,7 @@
 import UIKit
 
 class CityListTableViewCell: UITableViewCell {
-
+    // MARK: - Views
     lazy var locationTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 24, weight: .bold)
@@ -31,6 +31,7 @@ class CityListTableViewCell: UITableViewCell {
         return label
     }()
     
+    // MARK: - Inits
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -43,6 +44,7 @@ class CityListTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Setup 
     private func setupLocationLabel() {
         addSubview(locationTitleLabel)
         NSLayoutConstraint.activate([

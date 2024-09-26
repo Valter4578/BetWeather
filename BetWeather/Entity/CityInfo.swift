@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CityInfo {
+struct CityInfo: Codable {
     var cityName: String
     var lowestTemp: Int
     var highestTemp: Int

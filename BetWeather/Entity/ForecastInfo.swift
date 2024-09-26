@@ -6,12 +6,6 @@
 //
 
 import Foundation
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let forecastInfo = try? JSONDecoder().decode(ForecastInfo.self, from: jsonData)
-
-import Foundation
 
 // MARK: - ForecastInfo
 struct ForecastInfo: Codable {
@@ -31,24 +25,13 @@ struct ForecastInfo: Codable {
 // MARK: - Fact
 struct Fact: Codable {
     let daytime: Daytime?
-//    let obsTime: Int?
     let season, factSource: String?
-//    let uptime: Int?
-//    let cloudness: Double?
     let condition: FactCondition?
     let feelsLike, humidity: Int?
     let icon: String?
     let isThunder, polar: Bool?
-//    let precProb: Int?
-//    let precStrength: Double?
     let temp: Int?
-//    let uvIndex, tempWater, windAngle: Int?
-//    let windDir: WindDir?
-//    let windGust, windSpeed: Double?
-//    let source: String?
-//    let biomet: Biomet?
-//    let freshSnowMm: Int?
-//    let precMm: Double?
+
     let tempMin, tempAvg, tempMax: Int?
 
     enum CodingKeys: String, CodingKey {

@@ -8,13 +8,16 @@
 import Foundation
 
 class CityListInteractorImpl: CityListInteractorInput {
+    // MARK: - Dependencies
     weak var output: CityListInteractorOutput?
     var networkRepository: NetworkRepository
     
+    // MARK: - Init
     init(networkRepository: NetworkRepository) {
         self.networkRepository = networkRepository
     }
     
+    // MARK: - Functions 
     func fetchWeather(for coordinates: Coordinates) {
         Task {
             let forecastInfo = try await networkRepository.fetchWeather(coordinates: coordinates)

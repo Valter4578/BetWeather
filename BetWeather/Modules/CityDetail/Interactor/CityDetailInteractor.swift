@@ -12,6 +12,7 @@ class CityDetailInteractorImpl: CityDetailInteractorInput {
     weak var output: CityDetailInteractorOutput?
     var imageDownloader: ImageDownloader? 
     
+    // MARK: - Functions 
     func downloadImage(with iconName: String, for index: Int, in viewType: CityDetailImageInViewType) {
         Task {
             do {

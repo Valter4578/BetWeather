@@ -52,7 +52,11 @@ extension CityListPresenterImpl: CityListInteractorOutput {
             if let lat = forecastInfo.info?.lat, let lon = forecastInfo.info?.lon {
                 let cityName = await self.interactor?.getCityName(from: Coordinates(lat: lat, lon: lon))
                 
-                let cityInfo = CityInfo(cityName: cityName ?? "", lowestTemp: forecastInfo.fact?.tempMin ?? 0, highestTemp: forecastInfo.fact?.tempMin ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
+                // самую низкую температуру берем с ночи, самую высокую с дня
+                let highestTemp = forecastInfo.forecasts?[0].parts?.day?.tempMax
+                let lowestTemp = forecastInfo.forecasts?[0].parts?.night?.tempMin
+                
+                let cityInfo = CityInfo(cityName: cityName ?? "", lowestTemp: lowestTemp ?? 0, highestTemp: highestTemp ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
                 await MainActor.run {
                     cityInfos.append(cityInfo)
                     view?.reloadData()

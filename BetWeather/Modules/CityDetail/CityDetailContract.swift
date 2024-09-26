@@ -13,7 +13,6 @@ protocol CityDetailView: AnyObject {
     func setCityLabel(with text: String)
     func setTempLabel(with text: String)
     func setConditionsLabel(with text: String) 
-    func reloadData()
     
     func updateCellImage(_ image: UIImage, at index: Int, in viewType: CityDetailImageInViewType)
 }

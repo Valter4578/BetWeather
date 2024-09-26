@@ -27,6 +27,10 @@ class BaseNetworkService<Router: URLRequestConvertible> {
         }
     }
     
+    /// Делает асинхронный запрос в сеть
+    /// - Parameters:
+    ///   - returnType: Тип данных в которых будет распарсен запрос и который будет возвращен
+    ///   - router: куда будет делаться запрос
     func request<T: Decodable>(_ returnType: T.Type, router: Router) async throws -> T {
         let request = try router.makeURLRequest()
         

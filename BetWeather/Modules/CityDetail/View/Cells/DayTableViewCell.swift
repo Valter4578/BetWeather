@@ -52,11 +52,11 @@ class DayTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Functions
+    // MARK: - Configure functions 
     func configureCell(with data: WeekDayCellData) {
         weekDayLabel.text = data.weekDay
-        lowestTempLabel.text = String(data.lowestTemp)
-        highestTempLabel.text = String(data.highestTemp)
+        lowestTempLabel.text = String(data.lowestTemp) + "°"
+        highestTempLabel.text = String(data.highestTemp) + "°"
     }
     
     func configureImageView(with image: UIImage) {

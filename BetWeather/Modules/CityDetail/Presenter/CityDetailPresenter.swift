@@ -28,8 +28,8 @@ class CityDetailPresenterImpl: CityDetailPresenter {
     // MARK: - CityDetailPresenter's functions
     func viewDidLoad(view: CityDetailView) {
         view.setCityLabel(with: cityInfo?.cityName ?? "")
-        view.setTempLabel(with: String(forecastInfo?.fact?.temp ?? 0))
-        view.setConditionsLabel(with: forecastInfo?.fact?.condition?.rawValue ?? "")
+        view.setTempLabel(with: String(forecastInfo?.fact?.temp ?? 0) + "°")
+        view.setConditionsLabel(with: forecastInfo?.fact?.condition?.rawValue.replacingOccurrences(of: "-", with: " ") ?? "")
     }
     
     func getHourCellData(for row: Int) -> HourCellData? {
@@ -78,6 +78,7 @@ class CityDetailPresenterImpl: CityDetailPresenter {
     }
 }
 
+// MARK: - CityDetailInteractorOutput
 extension CityDetailPresenterImpl: CityDetailInteractorOutput {
     func imageDownloaded(with image: UIImage, for index: Int, in viewType: CityDetailImageInViewType) {
         Task {

@@ -36,7 +36,6 @@ class ImageDownloaderImpl: ImageDownloader {
         
         if url.pathExtension.lowercased() == "svg" {
             if let svgImage = SVGKImage(data: data)?.uiImage {
-                // Cache the SVG image
                 imageCache.cacheImage(svgImage, for: url)
                 return svgImage
             } else {
