@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CityListInteractorImpl: CityListInteractorInput {    
+class CityListInteractorImpl: CityListInteractorInput {
     weak var output: CityListInteractorOutput?
     var networkRepository: NetworkRepository
     
@@ -36,5 +36,19 @@ class CityListInteractorImpl: CityListInteractorInput {
                 output?.coordinatesFetched(coordinates: coordinates)
             }
         }
+    }
+    
+    func getCityName(from coordinates: Coordinates) async -> String? {
+        await Task {
+            do {
+                let response = try await self.networkRepository.fetchCityName(from: coordinates)
+                guard let cityName = response.features?[0].properties?.city else { return nil }
+                return cityName
+                
+            } catch {
+                print(error)
+                return nil
+            }
+        }.value
     }
 }

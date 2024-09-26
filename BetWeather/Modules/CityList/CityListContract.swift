@@ -31,6 +31,7 @@ protocol CityListInteractorInput: AnyObject {
     var output: CityListInteractorOutput? { get set }
     func fetchWeather(for coordinates: Coordinates)
     func fetchCityCoordinates(for city: String)
+    func getCityName(from coordinates: Coordinates) async -> String?
 }
 
 protocol CityListInteractorOutput: AnyObject {

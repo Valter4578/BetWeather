@@ -48,8 +48,16 @@ extension CityListPresenterImpl: CityListInteractorOutput {
     }
     
     func weatherFetched(forecastInfo: ForecastInfo) {
-        let cityInfo = CityInfo(cityName: forecastInfo.info?.tzinfo?.name ?? "", lowestTemp: forecastInfo.fact?.tempMin ?? 0, highestTemp: forecastInfo.fact?.tempMin ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
-        cityInfos.append(cityInfo)
-        view?.reloadData() 
+        Task {
+            if let lat = forecastInfo.info?.lat, let lon = forecastInfo.info?.lon {
+                let cityName = await self.interactor?.getCityName(from: Coordinates(lat: lat, lon: lon))
+                
+                let cityInfo = CityInfo(cityName: cityName ?? "", lowestTemp: forecastInfo.fact?.tempMin ?? 0, highestTemp: forecastInfo.fact?.tempMin ?? 0, tempNow: forecastInfo.fact?.temp ?? 0, fullForecast: forecastInfo)
+                await MainActor.run {
+                    cityInfos.append(cityInfo)
+                    view?.reloadData()
+                }
+            }
+        }
     }
 }
